@@ -1,11 +1,11 @@
-version: '3.8'
+version: '4.8'
 
 services:
   wings:
     image: ghcr.io/pterodactyl/wings:v1.6.1
     restart: always
     networks:
-      - wings0
+      - "wings0"
     ports:
       - "8080:8080"
       - "2022:2022"
@@ -24,10 +24,10 @@ services:
       - "/var/log/pterodactyl/:/var/log/pterodactyl/"
       - "/tmp/pterodactyl/:/tmp/pterodactyl/"
       - "/etc/ssl/certs:/etc/ssl/certs:ro"
-      # you may need /srv/daemon-data if you are upgrading from an old daemon
-      #- "/srv/daemon-data/:/srv/daemon-data/"
-      # Required for ssl if you use let's encrypt. uncomment to use.
-      #- "/etc/letsencrypt/:/etc/letsencrypt/"
+      - "you may need /srv/daemon-data if you are upgrading from an old daemon"
+      - "/srv/daemon-data/:/srv/daemon-data/"
+      - "Required for ssl if you use let's encrypt. uncomment to use."
+      - "/etc/letsencrypt/:/etc/letsencrypt/"
 networks:
   wings0:
     name: wings0
